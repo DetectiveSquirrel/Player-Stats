@@ -22,7 +22,7 @@ namespace Player_Stats_Dump.Core
             if (!Settings.DumpStatsBotton.PressedOnce() || !LocalPlayer.Entity.IsValid) return;
             var _string = string.Empty;
             GetCachedPlayerStats();
-            _string = _playerDataDictionary.Aggregate(_string, (current, stat) => current + $"{DescriptionAttr(stat.Key)} = {stat.Value}{Environment.NewLine}");
+            _string = _playerDataDictionary.Aggregate(_string, (current, stat) => current + $"\"{DescriptionAttr(stat.Key)}\" = {stat.Value}{Environment.NewLine}");
             using (var file = new StreamWriter($@"{LocalPluginDirectory}\Player Stat Collection.txt", false))
             {
                 file.Write(_string);
